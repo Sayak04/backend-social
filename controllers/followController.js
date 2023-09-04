@@ -13,7 +13,7 @@ export const followController = async (req, res) => {
       })
     }
 
-    // check if the the id provided is valid
+    // check if the id provided is valid
     // i.e user with the current id exists or not
     const toBeFollowedUser = await userModel.findOne({ _id: userId });
     if (!toBeFollowedUser) {
@@ -50,7 +50,11 @@ export const followController = async (req, res) => {
       message: `User ${currentUser.name} successfully followed user ${toBeFollowedUser.name}`,
     });
   } catch (err) {
-    console.log(err);
+    res.status(500).send({
+      success: false,
+      message: "Unknow error",
+      err,
+    })
   }
 };
 
