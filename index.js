@@ -5,6 +5,7 @@ import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import followRoutes from './routes/followRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import postRoutes from './routes/postRoutes.js';
 
 const app = express();
 app.use(bodyParser.json());
@@ -19,6 +20,8 @@ app.use('/api/v1', authRoutes);
 app.use('/api/v1', followRoutes);
 // - user route
 app.use('/api/v1', userRoutes);
+// - create post
+app.use('/api/v1', postRoutes);
 
 const PORT = process.env.PORT || 8080;
 
