@@ -132,6 +132,7 @@ export const postDetailsController = async (req, res) => {
         title: post.title,
         description: post.description,
         'Number of likes' : post.likedBy.length,
+        'Number of comments': post.comments.length,
       }
     })
   } catch (err) {
