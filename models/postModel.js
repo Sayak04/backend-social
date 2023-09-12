@@ -17,6 +17,14 @@ const postSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
+    likedBy: [
+        {
+            user: {
+                type: Schema.Types.ObjectId,
+                ref: "User",
+            }
+        }
+    ]
 });
 
 export default mongoose.model("Post", postSchema);

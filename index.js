@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes.js';
 import followRoutes from './routes/followRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import postRoutes from './routes/postRoutes.js';
+import likeRoutes from './routes/likeRoutes.js';
 
 const app = express();
 app.use(bodyParser.json());
@@ -22,6 +23,8 @@ app.use('/api/v1', followRoutes);
 app.use('/api/v1', userRoutes);
 // - create post
 app.use('/api/v1', postRoutes);
+// -like and dislike post
+app.use('/api/v1', likeRoutes);
 
 const PORT = process.env.PORT || 8080;
 
