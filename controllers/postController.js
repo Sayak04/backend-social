@@ -115,3 +115,29 @@ export const deletePostController = async (req, res) => {
 };
 
 
+export const postDetailsController = async (req, res) => {
+  try {
+    const postId = req.params.id;
+    const post = await postModel.findById(postId);
+    if(!post) {
+      return res.status(404).send({
+        success: false,
+        message: 'No such post found'
+      })
+    };
+    return res.status(200).send({
+      success: true,
+      post : {
+        id: post._id,
+        title: post.title,
+        description: post.description,
+        'Number of likes' : post.likedBy.length,
+      }
+    })
+  } catch (err) {
+    return res.status(500).send({
+      success: false,
+      message: err.message,
+    });
+  }
+}

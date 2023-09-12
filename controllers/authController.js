@@ -50,7 +50,7 @@ export const registerController = async (req, res) => {
       });
     }
 
-    res.status(200).send({
+    return res.status(200).send({
       success: true,
       message: "User registered successfully",
     });
