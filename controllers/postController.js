@@ -142,3 +142,19 @@ export const postDetailsController = async (req, res) => {
     });
   }
 }
+
+export const allPostsDetailsController = async (req, res) => {
+  try {
+    const posts = await postModel.find().populate("comments");
+    return res.status(200).send({
+      success: true,
+      message: "all posts retrieved successfully",
+      posts,
+    })
+  } catch (err) {
+    return res.status(500).send({
+      success: false,
+      message: err.message,
+    });
+  }
+}
